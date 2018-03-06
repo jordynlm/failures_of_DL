@@ -46,7 +46,7 @@ def run_training(args):
         train_op = optimizer.minimize(loss)
         
         session.run(tf.initialize_all_variables())
-        for step in xrange(args.num_iters):
+        for step in range(args.num_iters):
             X,Y = get_batch(args.batch_size,len_subset,args.d)
             _ = session.run(train_op,feed_dict={X_placeholder: X, Y_placeholder: Y})
             if (step % args.print_freq == 0) or step+1 == args.num_iters:
